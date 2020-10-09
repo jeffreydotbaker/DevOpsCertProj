@@ -6,4 +6,4 @@ services:
         ports:
             - 8888:80
         volumes:
-            - "./website:/var/www/html"
+            - "../website:/var/www/html"
