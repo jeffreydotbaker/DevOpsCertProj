@@ -1,0 +1,25 @@
+---
+  - name: Install and Launch the Simple PHP Web Application
+    hosts: testserver
+    vars:
+       - destdir: /home/edureka/finalproj
+    tasks:
+
+      - name: Download the Website code from GitRepo
+        become: yes
+        git:
+          repo: 'https://github.com/jeffreydotbaker/DevOpsCertProj.git'
+          dest: "{{ destdir }}"
+
+      - name: Change the working directory to git repo home dir, shut down running containers
+        shell: docker-compose stop
+        args:
+          chdir: "{{ destdir }}"
+      - name: Change the working directory to git repo home dir, destroy container images
+        shell: docker-compose down
+        args:
+          chdir: "{{ destdir }}"
+      - name: Change the working directory to git repo home dir, rebuild images and spin up containers
+        shell: docker-compose up -d --build
+        args:
+          chdir: "{{ destdir }}"    
