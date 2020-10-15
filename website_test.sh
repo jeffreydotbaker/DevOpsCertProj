@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # Run runnable jar
-java -jar /var/lib/jenkins/workspace/DevOPSProject/finalproject.jar
+sudo su -c "java -jar /var/lib/jenkins/workspace/DevOPSProject/finalproject.jar" edureka
